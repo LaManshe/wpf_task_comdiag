@@ -17,6 +17,8 @@ namespace wpf_task.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null)
+                return null;
             return new ImageConverter().ConvertBase64ToImage((string)value);
         }
 

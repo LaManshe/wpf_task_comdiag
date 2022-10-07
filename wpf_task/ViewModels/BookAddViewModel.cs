@@ -19,14 +19,14 @@ namespace wpf_task.ViewModels
         private string _Title;
         private string _ShortDescription;
         private string _ISBN;
-        private int? _Year;
+        private int _Year;
         private string _Base64Image;
         private Author _Author;
         private List<Author> _Authors;
         public string Title { get => _Title; set => Set(ref _Title, value); }
         public string ShortDescription { get => _ShortDescription; set => Set(ref _ShortDescription, value); }
         public string ISBN { get => _ISBN; set => Set(ref _ISBN, value); }
-        public int? Year { get => _Year; set => Set(ref _Year, value); }
+        public int Year { get => _Year; set => Set(ref _Year, value); }
         public string Base64Image { get => _Base64Image; set => Set(ref _Base64Image, value); }
         public Author Author { get => _Author; set => Set(ref _Author, value); }
         public List<Author> Authors { get => _Authors; set => Set(ref _Authors, value); }
@@ -55,6 +55,7 @@ namespace wpf_task.ViewModels
             ISBN = book.ISBN;
             Year = book.Year;
             Author = book.Author;
+            Base64Image = book.Base64Image ?? String.Empty;
 
             Authors = authors;
 

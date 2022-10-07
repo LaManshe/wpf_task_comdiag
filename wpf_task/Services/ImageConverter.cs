@@ -22,6 +22,7 @@ namespace wpf_task.Services
 
         public BitmapImage ConvertBase64ToImage(string code)
         {
+            if (code == null || code == String.Empty) return new BitmapImage();
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.StreamSource = new MemoryStream(Convert.FromBase64String(code));

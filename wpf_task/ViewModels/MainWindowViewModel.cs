@@ -7,6 +7,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using wpf_task.DAL.Entities;
@@ -70,8 +72,22 @@ namespace wpf_task.ViewModels
             var new_book = new Book();
             var allow_authors = _authorRepo.Items.ToList();
 
-            if (!_userDialog.Add(new_book, allow_authors))
+            if (!_userDialog.Add(ref new_book, allow_authors))
                 return;
+
+            FieldInfo[] fields = new_book.GetType().GetFields(BindingFlags.Public |
+                                          BindingFlags.NonPublic |
+                                          BindingFlags.Instance);
+
+            foreach (FieldInfo field in fields)
+            {
+                var val = field.GetValue(new_book);
+                if (val == String.Empty || val == null)
+                {
+                    MessageBox.Show("Нужно заполнить все поля");
+                    return;
+                }
+            }
 
             _Books.Add(_booksRepo.Add(new_book));
 
@@ -91,11 +107,27 @@ namespace wpf_task.ViewModels
             var edit_book = book;
             var allow_authors = _authorRepo.Items.ToList();
 
-            if (!_userDialog.Add(edit_book, allow_authors)) return;
+            if (!_userDialog.Add(ref edit_book, allow_authors)) return;
+
+            FieldInfo[] fields = edit_book.GetType().GetFields(BindingFlags.Public |
+                                          BindingFlags.NonPublic |
+                                          BindingFlags.Instance);
+
+            foreach (FieldInfo field in fields)
+            {
+                var val = field.GetValue(edit_book);
+                if (val == String.Empty || val == null)
+                {
+                    MessageBox.Show("Нельзя оставлять поля пустыми");
+                    return;
+                }
+            }
 
             _booksRepo.Update(edit_book);
 
             SelectedBook = edit_book;
+
+            OnGetBooksExecuted();
         }
         #endregion
 

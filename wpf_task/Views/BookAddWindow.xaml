@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:wpf_task.Views"
         xmlns:vm="clr-namespace:wpf_task.ViewModels"
         mc:Ignorable="d"
-        Title="Добавить книгу" Height="300" Width="500">
-    <Grid>
+        Title="Добавить книгу" Height="500" Width="500" MinHeight="500" MinWidth="500">
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -20,28 +20,33 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Margin="0, 3, 0, 3">
             <TextBlock Text="Название:"></TextBlock>
             <TextBox Text="{Binding Title}"></TextBox>
         </StackPanel>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Margin="0, 3, 0, 3">
             <TextBlock Text="Короткое описание:"></TextBlock>
             <TextBox Text="{Binding ShortDescription}"></TextBox>
         </StackPanel>
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="2" Margin="0, 3, 0, 3">
             <TextBlock Text="ISBN:"></TextBlock>
             <TextBox Text="{Binding ISBN}"></TextBox>
         </StackPanel>
-        <StackPanel Grid.Row="3">
+        <StackPanel Grid.Row="3" Margin="0, 3, 0, 3">
             <TextBlock Text="Год:"></TextBlock>
             <TextBox Text="{Binding Year}"></TextBox>
         </StackPanel>
-        <StackPanel Grid.Row="4">
+        <StackPanel Grid.Row="4" Margin="0, 3, 0, 3">
             <TextBlock Text="Изображение:"></TextBlock>
+            <Image Source="{Binding Base64Image, Converter={StaticResource ResourceKey=Base64ToImageConverter}}"
+                   Stretch="Uniform"
+                   Width="100"
+                   Height="50"
+                   Margin="5"></Image>
             <Button Content="Загрузить" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
                     Command="{Binding BrowseImageCommand}"/>
         </StackPanel>
-        <StackPanel Grid.Row="5">
+        <StackPanel Grid.Row="5" Margin="0, 3, 0, 3">
             <ComboBox ItemsSource="{Binding Authors}"
                       SelectedItem="{Binding Author}">
                 <ComboBox.ItemTemplate>
@@ -59,8 +64,8 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <Button Content="Добавить" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Button Content="Ок" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
                     Command="{StaticResource DialogResultButtonsCommand}"
                     CommandParameter="True"/>
             <Button Content="Отменить" Margin="3" Padding="20,3" IsCancel="True"

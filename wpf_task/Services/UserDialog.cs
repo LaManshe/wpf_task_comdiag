@@ -13,7 +13,7 @@ namespace wpf_task.Services
 {
     internal class UserDialog : IUserDialog
     {
-        public bool Add(Book book, List<Author> authors)
+        public bool Add(ref Book book, List<Author> authors)
         {
             var book_editor_model = new BookAddViewModel(book, authors);
 

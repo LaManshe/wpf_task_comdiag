@@ -10,7 +10,7 @@ namespace wpf_task.Services.Interfaces
 {
     public interface IUserDialog : IUserDialogBase
     {
-        bool Add(Book book, List<Author> authors);
+        bool Add(ref Book book, List<Author> authors);
 
         bool AddAuthor(Author author);
     }
