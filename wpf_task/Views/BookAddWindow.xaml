@@ -18,6 +18,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBlock Text="Название:"></TextBlock>
@@ -32,10 +33,15 @@
             <TextBox Text="{Binding ISBN}"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="3">
-            <TextBlock Text="Year:"></TextBlock>
+            <TextBlock Text="Год:"></TextBlock>
             <TextBox Text="{Binding Year}"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="4">
+            <TextBlock Text="Изображение:"></TextBlock>
+            <Button Content="Загрузить" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
+                    Command="{Binding BrowseImageCommand}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
             <ComboBox ItemsSource="{Binding Authors}"
                       SelectedItem="{Binding Author}">
                 <ComboBox.ItemTemplate>

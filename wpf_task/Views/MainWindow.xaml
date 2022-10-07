@@ -29,33 +29,58 @@
                               SelectedItem="{Binding SelectedBook}"
                               Grid.Row="0">
                         <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <WrapPanel>
+                            <DataTemplate >
+                                <WrapPanel >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <StackPanel Grid.Column="0">
-                                            <TextBlock Text="{Binding Title}"></TextBlock>
+                                        <StackPanel Grid.Column="0"
+                                                        Margin="10, 0, 10, 0" 
+                                                        VerticalAlignment="Center">
+
+                                            <Image Source="{Binding Base64Image, Converter={StaticResource ResourceKey=Base64ToImageConverter}}"
+                                                       Stretch="Uniform"
+                                                       Width="100"
+                                                       Height="50"
+                                                       Margin="5">
+
+                                            </Image>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="1">
-                                            <TextBlock Text="{Binding Title}"></TextBlock>
-                                            <TextBlock Text="{Binding ShortDescription}"></TextBlock>
+                                        
+                                        
+                                        <StackPanel Grid.Column="1"
+                                                    Margin="10, 0, 10, 0"
+                                                    VerticalAlignment="Center">
+
+                                            <TextBlock Text="Название:" TextDecorations="Underline"></TextBlock>
+                                            <TextBlock Text="{Binding Title}" FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="Короткое описание:" TextDecorations="Underline"></TextBlock>
+                                            <TextBlock Text="{Binding ShortDescription}" FontStyle="Italic"></TextBlock>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="2">
+                                        <StackPanel Grid.Column="2"
+                                                    Margin="10, 0, 10, 0" 
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="Год:" TextDecorations="Underline"></TextBlock>
                                             <TextBlock Text="{Binding Year}"></TextBlock>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="3">
+                                        <StackPanel Grid.Column="3"
+                                                    Margin="10, 0, 10, 0"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="ISBN:" TextDecorations="Underline"></TextBlock>
                                             <TextBlock Text="{Binding ISBN}"></TextBlock>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="4">
+                                        <StackPanel Grid.Column="4"
+                                                    Margin="10, 0, 10, 0"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="Автор:" TextDecorations="Underline"></TextBlock>
                                             <TextBlock Text="{Binding Author.Surname}"></TextBlock>
                                         </StackPanel>
                                     </Grid>
@@ -63,16 +88,18 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button Content="Добавить книгу" Margin="3" Command="{Binding AddNewBookCommand}"/>
-                        <Button Content="Изменить книгу" Margin="3" 
+                    <StackPanel Grid.Row="1" 
+                                Orientation="Horizontal"
+                                Margin="10, 20, 10, 20">
+                        <Button Content="Добавить книгу" Padding="5" Margin="3" Command="{Binding AddNewBookCommand}"/>
+                        <Button Content="Изменить книгу" Padding="5" Margin="3" 
                                 Command="{Binding EditBookCommand}"
                                 CommandParameter="{Binding SelectedBook}"/>
-                        <Button Content="Удалить книгу" Margin="3" 
+                        <Button Content="Удалить книгу" Padding="5" Margin="3" 
                             Command="{Binding RemoveBookCommand}"
                             CommandParameter="{Binding SelectedBook}"/>
 
-                        <Button Content="Добавить автора" Margin="3" Command="{Binding AddNewAuthorCommand}"/>
+                        <Button Content="Добавить автора" Padding="5" Margin="3" Command="{Binding AddNewAuthorCommand}"/>
                     </StackPanel>
                 </Grid>
                 

@@ -10,7 +10,7 @@ namespace wpf_task.ViewModels
     static class ViewModelRegistrator
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) => services
-           .AddScoped<MainWindowViewModel>()
+            .AddScoped<MainWindowViewModel>()
         ;
     }
 }

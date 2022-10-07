@@ -16,6 +16,8 @@ namespace wpf_task.Services
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<DbInit>()
             .AddTransient<IUserDialog, UserDialog>()
+            .AddTransient<IUserDialogBase, FileDialog>()
+            .AddTransient<IFileConverter, ImageConverter>()
         ;
     }
 }

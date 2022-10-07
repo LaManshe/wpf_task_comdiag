@@ -40,8 +40,8 @@ namespace wpf_task
         {
             var host = Host;
 
-            using (var scope = Services.CreateScope())
-                scope.ServiceProvider.GetRequiredService<DbInit>().InitializeAsync().Wait();
+            //using (var scope = Services.CreateScope())
+            //    scope.ServiceProvider.GetRequiredService<DbInit>().InitializeAsync().Wait();
 
             base.OnStartup(e);
             await host.StartAsync();
