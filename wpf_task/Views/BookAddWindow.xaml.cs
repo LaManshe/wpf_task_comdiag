@@ -23,5 +23,12 @@ namespace wpf_task.Views
         {
             InitializeComponent();
         }
+
+        private bool IsDigit(Key key) => key >= Key.D0 && key <= Key.D9 || key >= Key.NumPad0 && key <= Key.NumPad9;
+
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if(!IsDigit(e.Key)) e.Handled = true;
+        }
     }
 }

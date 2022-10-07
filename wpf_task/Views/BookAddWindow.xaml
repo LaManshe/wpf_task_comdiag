@@ -26,7 +26,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="0, 3, 0, 3">
             <TextBlock Text="Короткое описание:"></TextBlock>
-            <TextBox Text="{Binding ShortDescription}"></TextBox>
+            <TextBox Text="{Binding ShortDescription}" TextWrapping="Wrap" MaxHeight="100"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2" Margin="0, 3, 0, 3">
             <TextBlock Text="ISBN:"></TextBlock>
@@ -34,7 +34,7 @@
         </StackPanel>
         <StackPanel Grid.Row="3" Margin="0, 3, 0, 3">
             <TextBlock Text="Год:"></TextBlock>
-            <TextBox Text="{Binding Year}"></TextBox>
+            <TextBox Text="{Binding Year}" PreviewKeyDown="TextBox_PreviewKeyDown"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="4" Margin="0, 3, 0, 3">
             <TextBlock Text="Изображение:"></TextBlock>

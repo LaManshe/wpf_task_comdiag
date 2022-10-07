@@ -37,9 +37,9 @@ namespace wpf_task.DAL
 
         public T Get(int id) => Items.SingleOrDefault(item => item.Id == id);
 
-        public Task<T> GetAsync(int id, CancellationToken Cancel = default)
+        public async Task<T> GetAsync(int id, CancellationToken Cancel = default)
         {
-            throw new NotImplementedException();
+            return await Items.SingleOrDefaultAsync(item => item.Id == id, Cancel).ConfigureAwait(false);
         }
 
         public void Remove(int id)
@@ -51,9 +51,10 @@ namespace wpf_task.DAL
             _context.SaveChanges();
         }
 
-        public Task RemoveAsync(int id, CancellationToken Cancel = default)
+        public async Task RemoveAsync(int id, CancellationToken Cancel = default)
         {
-            throw new NotImplementedException();
+            _context.Remove(new T { Id = id });
+            await _context.SaveChangesAsync(Cancel).ConfigureAwait(false);
         }
 
         public void Update(T item)
@@ -64,9 +65,12 @@ namespace wpf_task.DAL
             _context.SaveChanges();
         }
 
-        public Task UpdateAsync(T item, CancellationToken Cancel = default)
+        public async Task UpdateAsync(T item, CancellationToken Cancel = default)
         {
-            throw new NotImplementedException();
+            if (item is null) throw new ArgumentNullException(nameof(item));
+            _context.Entry(item).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync(Cancel).ConfigureAwait(false);
         }
     }
 }

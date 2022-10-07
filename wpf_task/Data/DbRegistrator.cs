@@ -15,7 +15,7 @@ namespace wpf_task.Data
         {
             return services
             .AddDbContext<AppDbContext>(
-                options => options.UseMySql(configuration.GetConnectionString("LocalCS_MySql"), new MySqlServerVersion(new Version(8, 0, 29))))
+                options => options.UseMySql(configuration.GetConnectionString("RemoteCS_MySql"), new MySqlServerVersion(new Version(8, 0, 29))))
             .AddRepositoriesInDB()
             ;
         }

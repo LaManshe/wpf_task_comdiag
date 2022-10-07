@@ -165,6 +165,20 @@ namespace wpf_task.ViewModels
             if (!_userDialog.AddAuthor(new_author))
                 return;
 
+            FieldInfo[] fields = new_author.GetType().GetFields(BindingFlags.Public |
+                                          BindingFlags.NonPublic |
+                                          BindingFlags.Instance);
+
+            foreach (FieldInfo field in fields)
+            {
+                var val = field.GetValue(new_author);
+                if (val == String.Empty || val == null)
+                {
+                    MessageBox.Show("Нужно заполнить все поля");
+                    return;
+                }
+            }
+
             _authorRepo.Add(new_author);
         }
         #endregion

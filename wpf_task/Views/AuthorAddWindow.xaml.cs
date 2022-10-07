@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using wpf_task.ViewHelpers;
+using wpf_task.ViewModels;
 
 namespace wpf_task.Views
 {
@@ -22,6 +24,7 @@ namespace wpf_task.Views
         public AuthorAddWindow()
         {
             InitializeComponent();
+
         }
     }
 }
